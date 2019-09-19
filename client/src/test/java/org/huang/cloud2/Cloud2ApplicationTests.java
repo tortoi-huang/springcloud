@@ -35,9 +35,8 @@ public class Cloud2ApplicationTests {
 
 		final String url = loadBalancer.choose("service-producer").getUri().toString();
 		final String config2 = restTemplate.getForObject(url + "/cfg_name", String.class);
-		System.out.println("loadBalancer:" + config);
+		System.out.println("loadBalancer:" + config2);
 		System.out.println(url);
 		System.out.println("----------------------------------");
 	}
-
 }
