@@ -6,4 +6,5 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-consul'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
+    implementation project(':common-lib')
 }

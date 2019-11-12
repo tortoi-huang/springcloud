@@ -1,4 +1,6 @@
-rootProject.name = 'cloud2'
+rootProject.name = 'cloud'
 
 include 'client'
 include 'server'
+include 'common-lib'
+

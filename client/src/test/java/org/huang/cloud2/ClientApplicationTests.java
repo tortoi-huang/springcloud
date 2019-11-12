@@ -14,7 +14,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Cloud2ApplicationTests {
+public class ClientApplicationTests {
 	@Autowired
 	private LoadBalancerClient loadBalancer;
 	@Autowired
