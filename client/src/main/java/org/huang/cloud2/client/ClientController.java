@@ -1,15 +1,17 @@
-package org.huang.cloud2;
+package org.huang.cloud2.client;
 
+import org.huang.cloud2.common.ShareBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ClientController {
@@ -35,22 +37,6 @@ public class ClientController {
 	@GetMapping("/cfg_json")
 	public ShareBean cfgJson() {
 		return invoke("/cfg_json", ShareBean.class);
-	}
-
-	@GetMapping("/getRemain/{unit}")
-	public Map<Integer,String> getRemain(@PathVariable int unit) {
-		Random r = new Random();
-		Map<Integer,String> map = new HashMap<>((int)(100 / 0.75 )+ 1);
-		for(int i = 0;i < 100;i++) {
-			final int i1 = r.nextInt(unit);
-			try {
-				map.put(i1,invoke("/getRemain/" + i1, Integer.class) + "");
-			} catch (Exception e) {
-				e.printStackTrace();
-				map.put(i1,"exception");
-			}
-		}
-		return map;
 	}
 
 	@GetMapping("/cfg")

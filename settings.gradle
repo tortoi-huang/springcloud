@@ -3,4 +3,6 @@ rootProject.name = 'cloud'
 include 'client'
 include 'server'
 include 'common-lib'
+include 'client-hystrix'
+include 'client-loadbalance'
 

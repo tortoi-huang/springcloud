@@ -9,7 +9,7 @@ public class BizController {
 
 	@GetMapping("/getRemain/{unit}")
 	public int getRemain(@PathVariable int unit) {
-		int ret = Integer.MAX_VALUE % unit;
+		int ret = 1_000_000_000 % unit;
 		if(ret == 0) {
 			throw new RuntimeException("zero");
 		}

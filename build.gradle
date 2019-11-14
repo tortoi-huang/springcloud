@@ -2,7 +2,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE' apply false
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
-	id 'java'
+	//id 'java'
 }
 
 allprojects {
@@ -35,7 +35,8 @@ subprojects  {
 	dependencies {
 		implementation 'org.springframework.boot:spring-boot-starter'
 		implementation 'org.springframework.cloud:spring-cloud-starter'
-		
+		implementation 'org.slf4j:slf4j-api:1.7.28'
+
 		developmentOnly 'org.springframework.boot:spring-boot-devtools'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	}

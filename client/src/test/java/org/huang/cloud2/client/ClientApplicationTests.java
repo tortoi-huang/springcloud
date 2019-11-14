@@ -1,4 +1,4 @@
-package org.huang.cloud2;
+package org.huang.cloud2.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

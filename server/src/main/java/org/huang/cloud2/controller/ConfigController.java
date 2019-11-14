@@ -1,6 +1,6 @@
 package org.huang.cloud2.controller;
 
-import org.huang.cloud2.ShareBean;
+import org.huang.cloud2.common.ShareBean;
 import org.huang.cloud2.service.ConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

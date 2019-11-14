@@ -1,11 +1,9 @@
 
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-consul'
 	implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
 	implementation project(':common-lib')
 }

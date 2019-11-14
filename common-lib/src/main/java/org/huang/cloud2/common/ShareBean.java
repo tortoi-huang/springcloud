@@ -1,4 +1,4 @@
-package org.huang.cloud2;
+package org.huang.cloud2.common;
 
 import java.io.Serializable;
 import java.util.Date;
