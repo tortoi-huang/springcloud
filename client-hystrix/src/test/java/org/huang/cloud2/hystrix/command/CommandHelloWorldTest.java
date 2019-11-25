@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import rx.Observable;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +16,7 @@ public class CommandHelloWorldTest {
 
 	@Test
 	public void testExecute() throws Exception {
-		assertEquals("Hello World!", new CommandHelloWorld("World",0f).queue().get());
+		assertEquals("Hello World!", new CommandHelloWorld("World",0f).execute());
 		assertEquals("Hello Bob!", new CommandHelloWorld("Bob",0f).queue().get());
 	}
 
@@ -26,16 +24,16 @@ public class CommandHelloWorldTest {
 	public void testBreak() {
 		float rate = 0.5f;
 		int totalCount = 5000;
-		Map<String,Integer> map = new HashMap<>(3);
 		for (int i = 0; i < totalCount; i++) {
-			final char c = new CommandHelloWorld("huang", rate).execute().charAt(0);
-			map.compute(String.valueOf(c),(k,v) -> v == null ? 1 : v + 1);
+			new CommandHelloWorld("huang", rate).execute();
 		}
-		System.out.println(map);
-		final Integer failCount = map.get("g");
+		System.out.println(CommandHelloWorld.PATH_COUNT);
+		final Integer quitFailCount = CommandHelloWorld.PATH_COUNT.get("f");
+		final Integer failCount = CommandHelloWorld.PATH_COUNT.get("e");
+		final Integer successCount = CommandHelloWorld.PATH_COUNT.get("s");
 		assertNotNull(failCount);
-		//为了表示远大于实际概率
-		assertTrue(failCount * 1.0 / totalCount > 1 - 0.5 * rate);
+		assertTrue(quitFailCount > failCount);
+		assertTrue(quitFailCount > successCount);
 	}
 
 	@Test

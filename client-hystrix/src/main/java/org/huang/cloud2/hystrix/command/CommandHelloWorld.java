@@ -2,7 +2,14 @@ package org.huang.cloud2.hystrix.command;
 
 import com.netflix.hystrix.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 通过传入一个小数来计算失败的概率并手动抛出异常.
+ */
 public class CommandHelloWorld extends HystrixCommand<String> {
+	public static final Map<String,Integer> PATH_COUNT = new HashMap<>();
 	private final String name;
 	private final float rate;
 
@@ -24,17 +31,19 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 	@Override
 	protected String run() {
 		if(Math.random() < rate) {
+			PATH_COUNT.compute("e",(k,v) -> v == null ? 1 : v + 1);
 			throw new RuntimeException("not work this time");
 		}
+		PATH_COUNT.compute("s",(k,v) -> v == null ? 1 : v + 1);
 		return "Hello " + name + "!";
 	}
 
 	@Override
 	protected String getFallback() {
+		PATH_COUNT.compute("f",(k,v) -> v == null ? 1 : v + 1);
 		return "good bye " + name + ".";
 	}
-
-	/*@Override
+/*@Override
 	protected String getCacheKey() {
 		return name;
 	}*/

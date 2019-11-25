@@ -3,9 +3,12 @@ package org.huang.cloud2.hystrix.command;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixObservableCommand;
 import rx.Observable;
-import rx.schedulers.Schedulers;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AsyncCommandHelloWorld extends HystrixObservableCommand<String> {
+	public static final Map<String,Integer> PATH_COUNT = new HashMap<>();
 	private final String name;
 	private final float rate;
 
@@ -17,20 +20,20 @@ public class AsyncCommandHelloWorld extends HystrixObservableCommand<String> {
 
 	@Override
 	protected Observable<String> construct() {
-		return Observable.create((Observable.OnSubscribe<String>) observer -> {
+		return Observable.unsafeCreate(observer -> {
 			try {
 				if (!observer.isUnsubscribed()) {
 					if(Math.random() < rate) {
+						PATH_COUNT.compute("e",(k,v) -> v == null ? 1 : v + 1);
 						throw new RuntimeException("not work this time");
 					}
-					// a real example would do work like a network call here
-					observer.onNext("Hello");
-					observer.onNext(name + "!");
+					PATH_COUNT.compute("s",(k,v) -> v == null ? 1 : v + 1);
+					observer.onNext("Hello " + name + "!");
 					observer.onCompleted();
 				}
 			} catch (Exception e) {
 				observer.onError(e);
 			}
-		}).subscribeOn(Schedulers.io());
+		});
 	}
 }
