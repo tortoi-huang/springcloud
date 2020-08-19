@@ -1,7 +1,7 @@
 // plugins 不能直接写到 subprojects里面，要先在这里声明，然后在 subprojects 中使用 apply 引入
 plugins {
-	id 'org.springframework.boot' version '2.1.8.RELEASE' apply false
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
+	id 'org.springframework.boot' version '2.3.3.RELEASE' apply false
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE' apply false
 	//id 'java'
 }
 
@@ -17,13 +17,6 @@ subprojects  {
     
     sourceCompatibility = '1.8'
 
-	configurations {
-		developmentOnly
-		runtimeClasspath {
-			extendsFrom developmentOnly
-		}
-	}
-
 	repositories {
 		mavenLocal()//本地maven仓库
 		maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
@@ -35,7 +28,7 @@ subprojects  {
 	}
 
 	ext {
-		set('springCloudVersion', "Greenwich.SR3")
+		set('springCloudVersion', "Hoxton.SR7")
 	}
 
 	dependencyManagement {
