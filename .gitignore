@@ -32,7 +32,6 @@ build/
 
 ### project
 /.gradle
-/gradle/wrapper/gradle-wrapper.jar
 !/*/*/out
 /*/out
 !/*/*/build

@@ -11,7 +11,7 @@ allprojects {
 }
 
 subprojects  {
-	apply plugin: 'org.springframework.boot'
+	//apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'java'
     
@@ -25,25 +25,26 @@ subprojects  {
 	}
 
 	repositories {
+		mavenLocal()//本地maven仓库
+		maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
 		mavenCentral()
+	}
+
+	tasks.withType(JavaCompile) {
+		options.encoding = "UTF-8"
 	}
 
 	ext {
 		set('springCloudVersion', "Greenwich.SR3")
 	}
 
-	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter'
-		implementation 'org.springframework.cloud:spring-cloud-starter'
-		implementation 'org.slf4j:slf4j-api:1.7.28'
-
-		developmentOnly 'org.springframework.boot:spring-boot-devtools'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	}
-
 	dependencyManagement {
 		imports {
 			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 		}
+	}
+
+	test {
+		useJUnitPlatform()
 	}
 }

@@ -1,4 +1,5 @@
 
+apply plugin: 'org.springframework.boot'
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -7,4 +8,11 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
 	implementation 'org.apache.commons:commons-lang3:3.8.1'
+	
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.cloud:spring-cloud-starter'
+	implementation 'org.slf4j:slf4j-api'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
