@@ -18,6 +18,9 @@ public class CommandHelloWorldTest {
 	public void testExecute() throws Exception {
 		assertEquals("Hello World!", new CommandHelloWorld("World",0f).execute());
 		assertEquals("Hello Bob!", new CommandHelloWorld("Bob",0f).queue().get());
+
+		assertEquals("good bye World.", new CommandHelloWorld("World",1f).execute());
+		assertEquals("good bye Bob.", new CommandHelloWorld("Bob",1f).queue().get());
 	}
 
 	@Test

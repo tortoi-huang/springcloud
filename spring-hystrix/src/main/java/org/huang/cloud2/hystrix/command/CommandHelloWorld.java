@@ -4,12 +4,13 @@ import com.netflix.hystrix.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 通过传入一个小数来计算失败的概率并手动抛出异常.
  */
 public class CommandHelloWorld extends HystrixCommand<String> {
-	public static final Map<String,Integer> PATH_COUNT = new HashMap<>();
+	public static final Map<String,Integer> PATH_COUNT = new ConcurrentHashMap<>();
 	private final String name;
 	private final float rate;
 
@@ -25,7 +26,7 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 				//.andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionTimeoutInMilliseconds(500)) // 设置超时时间
 		);
 		this.name = name;
-		this.rate = rate > 0 && rate < 1 ? rate : 0;
+		this.rate = rate > 1 || rate < 1 ? 0 : 1;
 	}
 
 	@Override
@@ -43,8 +44,4 @@ public class CommandHelloWorld extends HystrixCommand<String> {
 		PATH_COUNT.compute("f",(k,v) -> v == null ? 1 : v + 1);
 		return "good bye " + name + ".";
 	}
-/*@Override
-	protected String getCacheKey() {
-		return name;
-	}*/
 }
