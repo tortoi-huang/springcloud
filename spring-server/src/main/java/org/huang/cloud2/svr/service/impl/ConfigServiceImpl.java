@@ -1,6 +1,6 @@
-package org.huang.cloud2.service.impl;
+package org.huang.cloud2.svr.service.impl;
 
-import org.huang.cloud2.service.ConfigService;
+import org.huang.cloud2.svr.service.ConfigService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

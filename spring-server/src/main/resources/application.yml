@@ -1,0 +1,13 @@
+config:
+  name: name from application.yml
+
+logging:
+  level:
+    root: info
+    org.springframework.cloud.consul: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

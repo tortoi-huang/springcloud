@@ -1,17 +1,17 @@
-
 apply plugin: 'org.springframework.boot'
+
 dependencies {
+	implementation project(':common-lib')
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.cloud:spring-cloud-config-server'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
-    implementation project(':common-lib')
 	
 	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.cloud:spring-cloud-starter'
+	//implementation 'org.springframework.cloud:spring-cloud-starter'
 	implementation 'org.slf4j:slf4j-api'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

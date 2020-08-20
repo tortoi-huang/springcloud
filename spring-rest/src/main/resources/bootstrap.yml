@@ -1,0 +1,13 @@
+server:
+  port: 19001
+spring:
+  application:
+    name: spring-rest
+  cloud:
+    consul:
+      host: ${CONSUL_SERVER_ADDR:127.0.0.1}
+      port: 8500
+      discovery:
+        register: false
+        #serviceName: service-rest-consumer
+        #healthCheckUrl: http://${spring.cloud.consul.host}:${spring.cloud.consul.port}/v1/health/node/guancheng-huang

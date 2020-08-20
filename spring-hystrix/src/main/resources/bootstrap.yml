@@ -1,0 +1,13 @@
+server:
+  port: 19003
+spring:
+  application:
+    name: spring-hystrix
+  cloud:
+    consul:
+      host: ${CONSUL_SERVER_ADDR:127.0.0.1}
+      port: 8500
+      discovery:
+        register: false
+        #serviceName: service-hystrix
+        #healthCheckUrl: http://${spring.cloud.consul.host}:${spring.cloud.consul.port}/v1/health/node/guancheng-huang

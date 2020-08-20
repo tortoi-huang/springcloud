@@ -1,0 +1,25 @@
+debug: true
+
+server:
+  port: 9000
+
+spring:
+  application:
+    name: spring-cloud2-server
+  cloud:
+    consul:
+      enabled: true
+      host: ${CONSUL_SERVER_ADDR:127.0.0.1}
+      port: 8500
+      discovery:
+        enabled: true
+        health-check-interval: 30s
+        instance-id: service-producer-1
+        service-name: service-producer
+        #health-check-path: /actuator/health
+        health-check-path: /discovery/health
+      config:
+        prefix: cloud2.config
+        default-context: ${spring.application.name}
+        data-key: configuration
+        format: yaml
